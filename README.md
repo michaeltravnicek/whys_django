@@ -15,16 +15,17 @@ This approach is for Linux-based systems and might differ on Windows and MacOS. 
 
 ```bash 
 virtualenv -p python3 .
-pip install -r requirements.txt
 ```
 Once your virtual environment is installed, use the next command to activate it.
 
 ```bash 
 source bin/activate
+pip install -r requirements.txt
 ```
 
 Now you can use 
 ```bash 
+python manage.py migrate
 python manage.py runserver
 ``` 
 to run the server, or 
