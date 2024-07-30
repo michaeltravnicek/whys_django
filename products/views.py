@@ -58,9 +58,7 @@ class ImportView(views.APIView):
         if item_id is None:
             return
         
-        if model.objects.filter(id=item_id).first():
-            raise IntegrityError(f"Item with id: {item_id} already present in DB")
-
+        return model.objects.filter(id=item_id).first()
 
     def post(self, request):
         data = request.data
@@ -69,8 +67,11 @@ class ImportView(views.APIView):
                 item_name, item_values = self._parse_item(item)
                 print(item_name, item_values)
                 model, model_serializer = _parsing_dict[item_name]
-                self._check_duplicity(item_values, model)
-                data_serializer = model_serializer(data=item_values)
+                existing_item = self._check_duplicity(item_values, model)
+                if existing_item:
+                    data_serializer = model_serializer(existing_item, data=item_values, partial=True)
+                else:
+                    data_serializer = model_serializer(data=item_values)
                 if not data_serializer.is_valid():
                     return Response(data_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
                 data_serializer.save()

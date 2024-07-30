@@ -43,6 +43,8 @@ https://docs.djangoproject.com/en/5.0/topics/db/models/
 https://www.django-rest-framework.org/api-guide/serializers/
 https://www.w3schools.com/django/django_insert_data.php
 https://docs.djangoproject.com/en/5.0/howto/custom-model-fields/
+https://stackoverflow.com/questions/69071531/how-to-use-django-serializer-to-update-an-instance 
+and much more stackoverflow
 
 # TODO
 There are also some flaws in this code. One of them is that secret keys should be stored in a .env file. Some of them are mentioned in the code like that, and because of the wrong format, I have decided to make a date text field.

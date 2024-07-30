@@ -7,17 +7,20 @@ class AttributeValue(models.Model):
 
 
 class AttributeName(models.Model):
+    id = models.BigIntegerField(primary_key=True)
     nazev = models.TextField(blank=True)
     kod = models.TextField(blank=True, null=True)
     zobrazit = models.BooleanField(blank=True, null=True)
 
 
 class Attribute(models.Model):
+    id = models.BigIntegerField(primary_key=True)
     nazev_atributu_id = models.ForeignKey(AttributeName, on_delete=models.CASCADE)
     hodnota_atributu_id = models.ForeignKey(AttributeValue, on_delete=models.CASCADE)
 
 
 class Product(models.Model):
+    id = models.BigIntegerField(primary_key=True)
     nazev = models.CharField(max_length=120, blank=True)
     description = models.TextField(blank=True)
     cena = models.FloatField()
@@ -28,20 +31,24 @@ class Product(models.Model):
 
 
 class ProductAttributes(models.Model):
+    id = models.BigIntegerField(primary_key=True)
     attribute = models.ForeignKey(Attribute, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
 
 class Image(models.Model):
+    id = models.BigIntegerField(primary_key=True)
     obrazek = models.TextField()
 
 
 class ProductImage(models.Model):
+    id = models.BigIntegerField(primary_key=True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     obrazek_id = models.ForeignKey(Image, on_delete=models.CASCADE)
 
 
 class Catalog(models.Model):
+    id = models.BigIntegerField(primary_key=True)    
     nazev = models.TextField(blank=True)
     obrazek_id = models.ForeignKey(Image, on_delete=models.CASCADE, blank=True, null=True)
     products_ids = models.ManyToManyField(Product)
