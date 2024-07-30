@@ -46,3 +46,7 @@ https://docs.djangoproject.com/en/5.0/howto/custom-model-fields/
 
 # TODO
 There are also some flaws in this code. One of them is that secret keys should be stored in a .env file. Some of them are mentioned in the code like that, and because of the wrong format, I have decided to make a date text field.
+
+There should be also tests added into CI/CD. 
+Database as all other binaries should not be uploaded to GitHub and should be in .gitignore. 
+I hope by mentioning all these problems highlight my abitily also to deal with them. 
