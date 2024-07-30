@@ -15,6 +15,7 @@ This approach is for Linux-based systems and might differ on Windows and MacOS. 
 
 ```bash 
 virtualenv -p python3 .
+pip install -r requirements.txt
 ```
 Once your virtual environment is installed, use the next command to activate it.
 
